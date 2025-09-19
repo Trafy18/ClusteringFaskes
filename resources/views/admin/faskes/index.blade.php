@@ -75,7 +75,7 @@
                                 <a href="/admin/datafasilitaskesehatan/edit/{{ $faskes->id_kota }}" class="btn link btn-sm btn-warning">
                                     <i class="bi bi-pencil-square text-light" style="font-size: .8rem;"></i>
                                 </a>
-                                <a href="/admin/datafasilitaskesehatan/delete/{{ $faskes->id_kota }}" class="btn btn-sm" style="background-color: #ea0606;">
+                                <a href="/admin/datafasilitaskesehatan/hapus/{{ $faskes->id_kota }}" class="btn btn-sm" style="background-color: #ea0606;">
                                     <i class="bi bi-trash3 text-light" style="font-size: .8rem;"></i>
                                 </a>
                             </td>

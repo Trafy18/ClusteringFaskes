@@ -14,7 +14,7 @@
                     <form method="post" action="/admin/datafasilitaskesehatan/update" >
                         {{ csrf_field() }}
                     <table class="table table-sm align-rows-center mb-0" style="width: 40%">
-                        <input type="hidden" name="id" value="{{ $f->id }}"> <br/>
+                        <input type="hidden" name="id" value="{{ $f->id_kota }}"> <br/>
                         <tr style="font-size: .9rem;">
                             <td><strong>Kota</strong></td>
                             <td>: <input name="Kota" type="text" value="{{ $f->Kota }}"></td>

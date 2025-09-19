@@ -21,7 +21,7 @@ class FaskesController extends Controller
 
     public function simpan_data_faskes(Request $request){
         $faskes = Faskes::create([
-            'id' =>$request->id,
+            'id_kota' =>$request->id,
             'Kota'=>$request->Kota,
             'Apotek'=>$request->Apotek,
             'Poliklinik'=>$request->Poliklinik,
@@ -37,7 +37,7 @@ class FaskesController extends Controller
         $filename = 'data-faskes.csv';
         $headers = [
             'Content-type' => 'text/csv',
-            'Content-Disposition' => "attachmen; filename=\"$filename\"",
+            'Content-Disposition' => "attachment; filename=\"$filename\"",
             'Pragma' => 'no-cache',
             'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
             'Expires' => '0',
@@ -46,7 +46,7 @@ class FaskesController extends Controller
             $handle = fopen('php://output', 'w');
             // Add CSV headers
             fputcsv($handle, [
-                'ID ',
+                'ID_kota ',
                 'Kota ',
                 'Apotek',
                 'Poliklinik',
@@ -54,14 +54,13 @@ class FaskesController extends Controller
                 'Pkm_pembantu',
                 'Rumah_sakit',
                 'Rs_barsalin',
-                'total_faskes'
             ]);
          // Fetch and process data in chunks
             Faskes::chunk(25, function ($faskes) use ($handle) {
                 foreach ($faskes as $f) {
              // Extract data from each f$f.
                     $data = [
-                        isset($f->id)? $f->id : '',
+                        isset($f->id_kota)? $f->id_kota : '',
                         isset($f->Kota)? $f->Kota : '',
                         isset($f->Apotek)? $f->Apotek : '',
                         isset($f->Poliklinik)? $f->Poliklinik : '',
@@ -69,8 +68,6 @@ class FaskesController extends Controller
                         isset($f->Pkm_pembantu)? $f->Pkm_pembantu : '',
                         isset($f->Rumah_sakit)? $f->Rumah_sakit : '',
                         isset($f->Rs_bersalin)? $f->Rs_bersalin : '',
-                        isset($f->total_fakses)? $f->total_faskes : '',
-
                     ];
     
              // Write data to a CSV file.
@@ -130,7 +127,7 @@ class FaskesController extends Controller
 
             //create new employee
             $employee = new Faskes();
-            $employee->id = $id;
+            $employee->id_kota = $id;
             $employee->Apotek= $Apotek;
             $employee->Poliklinik = $Poliklinik;
             $employee->Puskesmas = $Puskesmas;
@@ -163,10 +160,9 @@ class FaskesController extends Controller
      */
     public function store(Request $request)
     {
-        Faskes::create([
-            'id' =>$request->id,
+    $faskes = DB::table('faskes')->insert([
+            // 'id' =>$request->id,
             'Kota'=>$request->Kota,
-            'id_kota'=>$request->id_kota,
             'Apotek'=>$request->Apotek,
             'Poliklinik'=>$request->Poliklinik,
             'Puskesmas'=>$request->Puskesmas,
@@ -174,8 +170,11 @@ class FaskesController extends Controller
             'Rumah_sakit'=>$request->RumahSakit,
             'Rs_bersalin'=>$request->RsBersalin,
         ]);
-        return redirect('admin.faskes.index');
-    }
+        if ($faskes) {
+            return redirect('/admin/datafasilitaskesehatan')->with('success', 'Data berhasil diinput');
+        } else {
+            return redirect('/admin/datafasilitaskesehatan')->with('error', 'Data gagal ditambahkan');
+        }     }
 
     /**
      * Display the specified resource.
@@ -191,7 +190,7 @@ class FaskesController extends Controller
     public function edit($id)
     {
         // mengambil data pegawai berdasarkan id yang dipilih
-	$faskes = DB::table('faskes')->where('id',$id)->get();
+	$faskes = DB::table('faskes')->where('id_kota',$id)->get();
 	// passing data pegawai yang didapat ke view edit.blade.php
 	return view('admin.faskes.edit',['faskes' => $faskes]);
         //
@@ -202,7 +201,7 @@ class FaskesController extends Controller
      */
     public function update(Request $request)
     {   
-       $faskes= DB::table('faskes')->where('id',$request->id)->update([
+       $faskes= DB::table('faskes')->where('id_kota',$request->id)->update([
             'Kota'=>$request->Kota,
             'Apotek'=>$request->Apotek,
             'Poliklinik'=>$request->Poliklinik,
@@ -220,12 +219,11 @@ class FaskesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Faskes $faskes)
+    public function destroy($id)
     {
         //
-        $faskes = Faskes::findOrFail($faskes);
-        $faskes->delete();
-        return redirect('/admin/datafasilitaskesehatan')->with('success', 'Data berhasil dihapus');
+        DB::table('faskes')->where('id_kota',$id)->delete();
+        return redirect('/admin/datafasilitaskesehatan');    
     }
 
 }

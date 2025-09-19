@@ -55,7 +55,7 @@
                                 <a href="/admin/datawilayah/edit/{{ $w->id_kota }}" class="btn btn-sm btn-warning">
                                     <i class="bi bi-pencil-square text-light" style="font-size: .8rem;"></i>
                                 </a>
-                                <a href="/admin/datawilayah/hapus/{{ $w->id_kota }}" class="btn btn-sm" style="background-color: #ea0606;">
+                                <a href="/admin/datawilayah/delete/{{ $w->id_kota }}" class="btn btn-sm" style="background-color: #ea0606;">
                                     <i class="bi bi-trash3 text-light" style="font-size: .8rem;"></i>
                                 </a>
                                 {{-- <a href="" class="btn btn-sm" style="background-color: #17c1e8;">

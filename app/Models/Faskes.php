@@ -11,7 +11,7 @@ class Faskes extends Model
     use HasFactory;
     protected $table = 'faskes';
     //mapping ke kolom atau fieldnya
-    protected $fillable = ['id', 'Kota', 'id_kota','Apotek','Poliklinik', 'Puskesmas', 'Pkm_pembantu', 'Rumah_sakit', 'Rs_bersalin'];
+    protected $fillable = ['id_kota', 'Kota','Apotek','Poliklinik', 'Puskesmas', 'Pkm_pembantu', 'Rumah_sakit', 'Rs_bersalin'];
 
     public function cluster(){
         return $this->belongsTo(Perhitungan::class);

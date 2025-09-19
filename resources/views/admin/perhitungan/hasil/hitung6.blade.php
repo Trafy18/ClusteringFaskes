@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12"> 
             <ul class="nav nav-tabs">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <a class="nav-link" aria-current="page" href="{{ url('admin/hitung') }}">ITERASI1</a>
                 </li>
                 <li class="nav-item">
@@ -19,9 +19,9 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link " href="{{ url('/admin/hitung5') }}">ITERASI5</a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
-                  <a class="nav-link active " href="{{ url('/admin/hitung6') }}">ITERASI6</a>
+                  <a class="nav-link active " href="{{ url('/admin/hitung6') }}">Hasil</a>
                 </li>
               </ul>
 
@@ -37,7 +37,7 @@
         <div class="col-12">
             <div class="card mb-4 border-0" style="border-radius: 20px;">
             <div class="card-header border-0 pb-0" style="background-color: #fff; border-radius: 20px;">
-                <h4>Centroid Iterasi 6</h4>
+                <h4>Hasil Perhitungan</h4>
             </div>
             <div class="card-body px-2 pt-0 pb-2">
                 <div class="table-responsive p-4">

@@ -10,7 +10,7 @@
                 <div class="card-body p-3">
                     
                     <hr class="horizontal gray-light my-4">
-                    <form method="post" action="/admin/datafasilitaskesehatan/store" >
+                    <form method="post" action="/admin/datafasilitaskesehatan/simpan" >
                         {{ csrf_field() }}
                     <table class="table table-sm align-rows-center mb-0" style="width: 40%">
                         <input type="hidden" name="id" value=""> <br/>

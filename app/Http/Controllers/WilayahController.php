@@ -31,10 +31,10 @@ class WilayahController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreWilayahRequest $request)
+    public function store(Request $request)
     {
-        $wilayah = Wilayah::create([
-            'id_kota' =>$request->id,
+       $wilayah =  DB::table('wilayah')->insert([
+            // 'id_kota' =>$request->id,
             'Kota'=>$request->Kota,
             'jml_kecamatan'=>$request->JumlahKecamatan,
             'jml_desa_kelurahan'=>$request->JumlahDesaKelurahan,
@@ -42,7 +42,11 @@ class WilayahController extends Controller
             'jml_penduduk'=>$request->JumlahPenduduk,
             'luas_wilayah'=>$request->LuasWilayah,
         ]);
-        return redirect('admin.wilayah.index',['wilayah' => $wilayah]);
+        if ($wilayah) {
+            return redirect('/admin/datawilayah')->with('success', 'Data berhasil diinput');
+        } else {
+            return redirect('/admin/datawilayah')->with('error', 'Data gagal ditambahkan');
+        } 
     }
 
 
@@ -87,11 +91,10 @@ class WilayahController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Wilayah $wilayah)
+    public function destroy($id)
     {
         //
-        $faskes = Wilayah::findOrFail($wilayah);
-        $faskes->delete();
-        return redirect('/admin/datafasilitaskesehatan')->with('success', 'Data berhasil dihapus');
+        DB::table('wilayah')->where('id_kota',$id)->delete();
+        return redirect('/admin/datawilayah');
     }
 }

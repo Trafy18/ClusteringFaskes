@@ -91,12 +91,12 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 
     //route perhitungan
     Route::get('/perhitungan',[PerhitunganController::class,'index'])->name('perhitungan');
-    Route::get('/hitung',[PerhitunganController::class,'hasil'])->name('perhitungan1');
-    Route::get('/hitung2',[PerhitunganController::class,'hasil2'])->name('perhitungan2');
-    Route::get('/hitung3',[PerhitunganController::class,'hasil3'])->name('perhitungan3');
-    Route::get('/hitung4',[PerhitunganController::class,'hasil4'])->name('perhitungan4');
-    Route::get('/hitung5',[PerhitunganController::class,'hasil5'])->name('perhitungan5');
-    Route::get('/hitung6',[PerhitunganController::class,'hasil6'])->name('perhitungan6');
+    Route::get('/hitung',[PerhitunganController::class,'hasil6'])->name('perhitungan1');
+    // Route::get('/hitung2',[PerhitunganController::class,'hasil2'])->name('perhitungan2');
+    // Route::get('/hitung3',[PerhitunganController::class,'hasil3'])->name('perhitungan3');
+    // Route::get('/hitung4',[PerhitunganController::class,'hasil4'])->name('perhitungan4');
+    // Route::get('/hitung5',[PerhitunganController::class,'hasil5'])->name('perhitungan5');
+    // Route::get('/hitung6',[PerhitunganController::class,'hasil6'])->name('perhitungan6');
 
     
 });

@@ -47,7 +47,7 @@
                     @method('')
                         <button type="submit" class="btn btn-success" >Hitung</button>
                 </form> --}}
-                <button class="btn btn-success" type="button" onclick="window.location.href='{{ url('/admin/hitung') }}'" >Hitung</button>
+                <button class="btn btn-success" type="button" onclick="window.location.href='{{ url('/admin/hitung6') }}'" >Hitung</button>
                 </div>
                 <div class="container-fluid">
                     <div class="chart-container">
